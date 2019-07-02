@@ -66,7 +66,7 @@ export default class List extends PureComponent {
 
         return (
             <Container>
-                {this._renderHeader()}
+                {this.props.data.length > 0 && this._renderHeader()}
                 {this._renderList()}
             </Container>
         );
