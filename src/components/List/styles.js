@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { marginSize } from '../../styles/sizes';
 
 const styles = StyleSheet.create({
-    input: {
-        marginTop: marginSize.verySmall
+    listContentContainer: {
+        flexGrow: 1,
+        paddingBottom: 12,
+        paddingTop: 12
     }
-});
+})
 
 export default styles;

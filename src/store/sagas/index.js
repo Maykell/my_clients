@@ -1,8 +1,14 @@
 import { all, takeLatest } from 'redux-saga/effects';
 
-import { loginTypes } from '../ducks/login';
-import { loginSaga } from '../sagas/login';
+import { clientTypes } from '../ducks/client';
+import { saveSaga, updateSaga, removeSaga, getAllSaga } from '../sagas/client';
 
 export default function* rootSaga() {
-    yield all([takeLatest(loginTypes.LOGIN_REQUEST, loginSaga)]);
+    yield all(
+        [
+            takeLatest(clientTypes.SAVE, saveSaga),
+            takeLatest(clientTypes.UPDATE, updateSaga),
+            takeLatest(clientTypes.REMOVE, removeSaga),
+            takeLatest(clientTypes.GET_ALL, getAllSaga)
+        ]);
 }

@@ -1,19 +1,19 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
-const setToken = async value => {
+const save = async value => {
     try {
-        await AsyncStorage.setItem('@app:token', value);
+        await AsyncStorage.setItem('@app:clients', value);
     } catch (error) {
-        console.log('setToken: AsyncStorageUtil -> ', error);
+        console.log('save: AsyncStorageUtil -> ', error);
     }
 };
 
-const getToken = async () => {
+const getClients = async () => {
     try {
-        return await AsyncStorage.getItem('@app:token');
+        return await AsyncStorage.getItem('@app:clients');
     } catch (error) {
-        console.log('getToken: AsyncStorageUtil -> ', error);
+        console.log('getClients: AsyncStorageUtil -> ', error);
     }
 };
 
-export default { setToken, getToken };
+export default { save, getClients };
