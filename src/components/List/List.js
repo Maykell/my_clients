@@ -23,7 +23,6 @@ export default class List extends PureComponent {
             onOpenCloseMenu={this._onOpenCloseMenu}
             selected={!!this.state.selected.get(item.uuid)}
             removeItem={this.props.removeItem}
-            navigation={this.props.navigation}
         />
     )
 
@@ -34,6 +33,7 @@ export default class List extends PureComponent {
                 placeholder='Buscar clientes'
                 onChangeText={query => { this.setState({ query }); }}
                 value={query}
+                style={styles.searchBar}
             />
         );
     }
@@ -62,6 +62,7 @@ export default class List extends PureComponent {
             />
         );
     }
+
     render() {
 
         return (

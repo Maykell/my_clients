@@ -30,8 +30,7 @@ class MainScreen extends Component {
     _renderList = () => (
         <List
             data={this.props.storeClient.data}
-            removeItem={this.props.removeClient}
-            navigation={this.props.navigation} />
+            removeItem={this.props.removeClient} />
     )
 
     _navigateToRegisterScreen = () => {

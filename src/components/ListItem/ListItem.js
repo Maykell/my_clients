@@ -1,18 +1,21 @@
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Avatar, Card, TouchableRipple, Menu } from 'react-native-paper';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 import { screens } from '../../config';
 
-export default class ListItem extends PureComponent {
+import { withNavigation } from 'react-navigation';
+
+class ListItem extends PureComponent {
 
     _onPress = () => {
         this.props.onOpenCloseMenu(this.props.item.uuid);
     };
 
     _handleListItem = (item) => {
+        this._onPress();
         this.props.navigation.navigate(screens.RegisterScreen, {
             client: item
         });
@@ -39,10 +42,7 @@ export default class ListItem extends PureComponent {
                             </TouchableRipple>
                         }
                     >
-                        <Menu.Item onPress={() => {
-                            this._onPress()
-                            this._handleListItem(item)
-                        }} title="Editar" />
+                        <Menu.Item onPress={() => this._handleListItem(item)} title="Editar" />
                         <Menu.Item onPress={() => this.props.removeItem(item.uuid)} title="Excluir" />
                     </Menu>
 
@@ -53,3 +53,5 @@ export default class ListItem extends PureComponent {
         );
     }
 }
+
+export default withNavigation(ListItem);

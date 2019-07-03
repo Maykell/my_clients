@@ -1,5 +1,7 @@
-import { call, put, delay } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import { clientActions } from '../ducks/client';
+import NavigationService from '../../navigation/NavigationService';
+
 import { asyncStorageUtil } from '../../utils';
 
 export function* saveSaga(action) {
@@ -18,6 +20,7 @@ export function* saveSaga(action) {
 
         yield call(asyncStorageUtil.save, JSON.stringify(clients));
         yield put(clientActions.saveClientSuccess());
+        NavigationService.back();
     } catch (error) {
         yield put(clientActions.saveClientError(error));
     }
