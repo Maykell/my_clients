@@ -42,7 +42,9 @@ export default class List extends PureComponent {
         const { data } = this.props;
         const { query } = this.state;
 
-        const filterItems = data.filter(item =>
+        const clients = data !== null ? data : [];
+
+        const filterItems = clients.filter(item =>
             item.name.includes(query.toLowerCase()) ||
             item.birthDay.includes(query.toLowerCase()) ||
             item.cpf.includes(query.toLowerCase()) ||
@@ -65,9 +67,13 @@ export default class List extends PureComponent {
 
     render() {
 
+        const { data } = this.props;
+
+        const clients = data !== null ? data : [];
+
         return (
             <Container>
-                {this.props.data.length > 0 && this._renderHeader()}
+                {clients.length > 0 && this._renderHeader()}
                 {this._renderList()}
             </Container>
         );
